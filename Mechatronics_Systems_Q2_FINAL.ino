@@ -86,6 +86,7 @@ void loop() {
   // Step 3: Scott's LCD code — unchanged
   int percent = map(potval, 0, 1023, 0, 100);
   int ambientlevel = map(analogRead(res), 0, 900, 0, 100);
+  ambientlevel = constrain(ambientlevel, 0, 100);   // I've added constrain () to prevent the ambient reading exceeding 100% under very bright conditions
   lcd.setCursor(0,0);
   lcd.print("Ambient: ");
   lcd.print(ambientlevel);
